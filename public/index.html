@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self';" />
+  <title>WebGPU Interactive Audio Visualizer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app-shell">
+    <header class="top-bar">
+      <div class="brand">
+        <h1>WebGPU Audio Synth &amp; Visualizer <sup>(v<span id="version"></span>)</sup></h1>
+      </div>
+      <div class="controls">
+        <button id="beat-toggle-btn" type="button" class="ctrl-btn active">Beat: ON</button>
+        <label class="control-group" for="bpm-slider">
+          <span id="bpm-value">120 BPM</span>
+          <input id="bpm-slider" type="range" min="70" max="170" value="120" step="1" />
+        </label>
+        <label class="control-group" for="synth-mode-select">
+          <span class="tone-label">Tone:</span>
+          <select id="synth-mode-select">
+            <option value="0">Grand Synth Piano</option>
+            <option value="1">FM Electric Piano</option>
+            <option value="2">Cyber Saw Lead</option>
+          </select>
+        </label>
+      </div>
+    </header>
+
+    <div id="error-banner" class="error-banner" hidden></div>
+
+    <main class="visualizer-stage">
+      <canvas id="visualizer-canvas"></canvas>
+    </main>
+
+    <section class="keyboard-section" aria-label="Interactive Piano Keyboard">
+      <div class="keyboard-hint">
+        Play with touch/mouse drag or keyboard keys (Lower octave: Z–M / S,D,G,H,J &bull; Upper octave: Q–I / 2,3,5,6,7)
+      </div>
+      <div id="piano-keyboard" class="piano-keyboard"></div>
+    </section>
+
+    <div id="start-overlay" class="start-overlay" role="button" tabindex="0" aria-label="Start Audio Visualizer">
+      <div class="start-card">
+        <div class="start-icon">&#9654;</div>
+        <h2>Click or Tap to Start</h2>
+        <p>Starts the WebGPU compute synth &amp; beat</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js" defer></script>
+</body>
+</html>

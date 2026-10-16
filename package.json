@@ -1,0 +1,20 @@
+{
+  "name": "webgpu-interactive-audio-visulizer",
+  "version": "1.0.0",
+  "description": "Interactive WebGPU compute shader audio synthesizer and visualizer",
+  "private": true,
+  "scripts": {
+    "build:js": "esbuild src/main.ts src/audio-worker.ts --bundle --outdir=dist --target=es2022 --format=iife --sourcemap",
+    "build:static": "node scripts/build-static.js",
+    "build": "tsc --noEmit && npm run build:static && npm run build:js",
+    "lint": "gts lint",
+    "fix": "gts fix",
+    "clean": "gts clean"
+  },
+  "devDependencies": {
+    "@webgpu/types": "^0.1.74",
+    "esbuild": "^0.28.2",
+    "gts": "^7.0.0",
+    "typescript": "^5.9.3"
+  }
+}
